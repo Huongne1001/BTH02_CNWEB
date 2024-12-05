@@ -12,5 +12,15 @@ class HomeController {
         $news = News::getById($id); // Lấy chi tiết tin tức theo id
         include 'views/news/detail.php'; // Truyền dữ liệu chi tiết qua view
     }
+
+    // Thêm phương thức tìm kiếm
+    public function search() {
+        $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : ''; // Lấy từ khóa tìm kiếm từ URL
+        $news = News::search($keyword); // Gọi phương thức tìm kiếm trong model News
+        if (empty($news)) {    // Nếu không có tin tức
+            $message = "Không có tin tức! Hãy tìm kiếm thông tin khác...";
+        }
+        include 'views/home/index.php'; // Truyền dữ liệu qua view
+    }
 }
 ?>

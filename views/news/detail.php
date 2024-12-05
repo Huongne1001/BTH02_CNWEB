@@ -16,10 +16,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="?controller=home&action=index">Trang Chủ</a>
+                        <a class="nav-link">Trang Chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="?controller=news&action=index">Danh sách Tin Tức</a>
+                        <a class="nav-link active" href="?controller=home&action=index">Danh sách Tin Tức</a>
                     </li>
                 </ul>
             </div>
