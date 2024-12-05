@@ -1,54 +1,32 @@
 <?php
+require_once 'Database.php';
 
-class News
-{
-    private $db;
-
-    public function __construct()
-    {
-        global $database; // Sử dụng biến $database được khai báo toàn cục trong index.php
-        $this->db = $database;
+class News {
+    public static function getAll() {
+        $db = new Database();
+        $conn = $db->connect(); // Kết nối CSDL
+        $stmt = $conn->query("SELECT * FROM news ORDER BY created_at DESC"); // Lấy danh sách tin
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Trả về mảng kết quả
     }
 
-    // Lấy danh sách tất cả tin tức
-    public function getAllNews()
-    {
-        $query = "SELECT news.id, news.title, news.content, news.image, news.created_at, categories.name AS category_name 
-                  FROM news
-                  INNER JOIN categories ON news.category_id = categories.id
-                  ORDER BY news.created_at DESC";
-        $stmt = $this->db->prepare($query);
+    // Thêm phương thức getById để lấy chi tiết tin tức theo ID
+    public static function getById($id) {
+        $db = new Database();
+        $conn = $db->connect(); // Kết nối CSDL
+        $stmt = $conn->prepare("SELECT * FROM news WHERE id = :id"); // Truy vấn lấy tin tức theo id
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT); // Bảo vệ truy vấn khỏi SQL Injection
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC); // Trả về tin tức
     }
 
-    // Lấy chi tiết một bài tin tức theo ID
-    public function getNewsById($id)
-    {
-        $query = "SELECT news.id, news.title, news.content, news.image, news.created_at, categories.name AS category_name 
-                  FROM news
-                  INNER JOIN categories ON news.category_id = categories.id
-                  WHERE news.id = :id";
-        $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+    // Thêm phương thức tìm kiếm tin tức theo từ khóa
+    public static function search($keyword) {
+        $db = new Database();
+        $conn = $db->connect(); // Kết nối CSDL
+        $stmt = $conn->prepare("SELECT * FROM news WHERE title LIKE ? OR content LIKE ? ORDER BY created_at DESC");
+        $stmt->execute(['%' . $keyword . '%', '%' . $keyword . '%']); // Tìm kiếm theo tiêu đề và nội dung
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Trả về kết quả tìm kiếm
     }
 
-    // Tìm kiếm tin tức theo từ khóa
-    public function searchNews($keyword)
-    {
-        $query = "SELECT news.id, news.title, news.content, news.image, news.created_at, categories.name AS category_name 
-                  FROM news
-                  INNER JOIN categories ON news.category_id = categories.id
-                  WHERE news.title LIKE :keyword OR news.content LIKE :keyword
-                  ORDER BY news.created_at DESC";
-        $stmt = $this->db->prepare($query);
-        $keyword = '%' . $keyword . '%';
-        $stmt->bindParam(':keyword', $keyword, PDO::PARAM_STR);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
 }
-
 ?>
