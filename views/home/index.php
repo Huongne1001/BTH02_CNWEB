@@ -49,6 +49,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="?controller=home&action=index">Danh sách Tin Tức</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="?controller=admin&action=dashboard">Đến trang quản trị</a>
+                    </li>
                 </ul>
             </div>
         </div>
