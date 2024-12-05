@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,6 +32,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Thanh menu -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -51,7 +53,6 @@
             </div>
         </div>
     </nav>
-
     <!-- Phần tiêu đề và thanh tìm kiếm -->
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center">

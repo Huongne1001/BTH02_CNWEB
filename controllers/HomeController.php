@@ -23,4 +23,5 @@ class HomeController {
         include 'views/home/index.php'; // Truyền dữ liệu qua view
     }
 }
+
 ?>
