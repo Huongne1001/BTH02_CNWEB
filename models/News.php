@@ -51,4 +51,8 @@ class News
     }
 }
 
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> cb5a51e4f144c6be56999af1e6e6b4bbee24a6e5
