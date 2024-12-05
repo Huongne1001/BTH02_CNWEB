@@ -26,7 +26,20 @@
         </div>
     </nav>
 
+    <!-- Chi tiết tin tức -->
+    <div class="container mt-5">
+        <h1 class="text-center"><?= $news['title'] ?></h1> <!-- Tiêu đề tin tức -->
+        <p class="text-center text-muted">
+            Ngày đăng: <?= date('d/m/Y H:i', strtotime($news['created_at'])) ?> <!-- Thời gian đăng -->
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <img src="uploads/<?= $news['image'] ?>" class="img-fluid" alt="Hình ảnh tin tức"> <!-- Hình ảnh -->
+                <p class="mt-3"><?= nl2br($news['content']) ?></p> <!-- Nội dung tin tức -->
+            </div>
+        </div>
+    </div>
 
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>                            
 </html>
