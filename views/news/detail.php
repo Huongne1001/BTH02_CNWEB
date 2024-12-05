@@ -26,17 +26,7 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <div class="card">
-            <img src="assets/uploads/<?php echo $news['image']; ?>" class="card-img-top" alt="Image">
-            <div class="card-body">
-                <h5 class="card-title"><?php echo $news['title']; ?></h5>
-                <p class="card-text"><?php echo nl2br($news['content']); ?></p>
-                <p class="text-muted">Danh mục: <?php echo $news['category_name']; ?></p>
-                <p class="text-muted">Ngày tạo: <?php echo $news['created_at']; ?></p>
-            </div>
-        </div>
-    </div>
+
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-</body>
+</body>                            
 </html>
