@@ -5,7 +5,7 @@ $dbname = 'news';
 $username = 'root';
 $password = '';
 
-
+session_start();
 
 try {
     $database = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
@@ -14,19 +14,15 @@ try {
     die("Lỗi kết nối cơ sở dữ liệu: " . $e->getMessage());
 }
 
-// Get the controller and action from the URL
-$controller = isset($_GET['controller']) ? $_GET['controller'] : 'home'; // Get tham số controller từ URL
-$action = isset($_GET['action']) ? $_GET['action'] : 'index'; // Get tham số action từ URL
+$controller = isset($_GET['controller']) ? $_GET['controller'] : 'home';
+$action = isset($_GET['action']) ? $_GET['action'] : 'index';
 
-// Create the controller class name
-$controllerClass = ucfirst($controller) . 'Controller'; // ProductController
-
-// Instantiate the controller
-$controllerFile = "controllers/$controllerClass.php"; // controllers/ProductController.php
+$controllerClass = ucfirst($controller) . 'Controller';
+$controllerFile = "controllers/$controllerClass.php";
 if (file_exists($controllerFile)) {
     include_once $controllerFile;
-    $controllerInstance = new $controllerClass(); // $controllerInstance = new ProductController()
-    $controllerInstance->$action(); // ProductController->index()
+    $controllerInstance = new $controllerClass(); 
+    $controllerInstance->$action();
 } else {
     echo "Controller not found.";
 }
