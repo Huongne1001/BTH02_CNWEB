@@ -8,16 +8,34 @@ class AdminController {
     }
 
     public function addNews() {
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             require_once 'models/News.php';
             $newsModel = new News();
+
             $title = $_POST['title'];
             $content = $_POST['content'];
             $categoryId = $_POST['category_id'];
 
-            $newsModel->createNews($title, $content, $categoryId);
+            // Handle image upload
+            $imagePath = null;
+            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                $uploadDir = 'uploads/';
+                $imagePath = $uploadDir . basename($_FILES['image']['name']);
+                move_uploaded_file($_FILES['image']['tmp_name'], $imagePath);
+            }
+
+            $newsModel->createNews($title, $content, $categoryId, $imagePath);
             header('Location: index.php?action=dashboard');
         } else {
+            require_once 'models/Category.php';
+            $categoryModel = new Category();
+            $categories = $categoryModel->getAllCategories();
+            // echo '<pre>';
+            // print_r($categories);
+            // echo '</pre>';
+            // die();
+
             require 'views/admin/news/add.php';
         }
     }
@@ -32,11 +50,22 @@ class AdminController {
             $content = $_POST['content'];
             $categoryId = $_POST['category_id'];
 
-            $newsModel->updateNews($id, $title, $content, $categoryId);
+            // Handle image upload
+            $imagePath = null;
+            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                $uploadDir = 'uploads/';
+                $imagePath = $uploadDir . basename($_FILES['image']['name']);
+                move_uploaded_file($_FILES['image']['tmp_name'], $imagePath);
+            }
+
+            $newsModel->updateNews($id, $title, $content, $categoryId, $imagePath);
             header('Location: index.php?action=dashboard');
         } else {
             $id = $_GET['id'];
             $news = $newsModel->getNewsById($id);
+            require_once 'models/Category.php';
+            $categoryModel = new Category();
+            $categories = $categoryModel->getAllCategories();
             require 'views/admin/news/edit.php';
         }
     }

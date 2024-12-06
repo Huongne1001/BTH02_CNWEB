@@ -41,14 +41,21 @@
                 <label for="image" class="form-label">Hình ảnh</label>
                 <input type="file" name="image" class="form-control" id="image">
             </div>
+            <?php
+            echo $categories;
+            ?>
+                        
             <div class="mb-3">
                 <label for="category_id" class="form-label">Danh mục</label>
                 <select name="category_id" class="form-select" id="category_id" required>
                     <option value="" selected disabled>Chọn danh mục</option>
                     <!-- Lặp qua các danh mục có trong cơ sở dữ liệu -->
                     <?php foreach ($categories as $category): ?>
-                        <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                        <option value="<?php echo $category['id']; ?>">
+                            <?php echo $category['name']; ?>
+                        </option>
                     <?php endforeach; ?>
+
                 </select>
             </div>
             <button type="submit" class="btn btn-success">Thêm Tin Tức</button>
