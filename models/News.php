@@ -19,14 +19,14 @@ class News {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function createNews($title, $content, $categoryId) {
-        $stmt = $this->db->prepare('INSERT INTO news (title, content, category_id) VALUES (?, ?, ?)');
-        $stmt->execute([$title, $content, $categoryId]);
+    public function createNews($title, $content, $categoryId, $imagePath) {
+        $stmt = $this->db->prepare('INSERT INTO news (title, content, image, category_id) VALUES (?, ?, ?, ?)');
+        $stmt->execute([$title, $content, $imagePath, $categoryId]);
     }
 
-    public function updateNews($id, $title, $content, $categoryId) {
-        $stmt = $this->db->prepare('UPDATE news SET title = ?, content = ?, category_id = ? WHERE id = ?');
-        $stmt->execute([$title, $content, $categoryId, $id]);
+    public function updateNews($id, $title, $content, $categoryId, $imagePath) {
+        $stmt = $this->db->prepare('UPDATE news SET title = ?, content = ?, category_id = ?, image = ? WHERE id = ?');
+        $stmt->execute([$title, $content, $categoryId, $imagePath, $id]);
     }
 
     public function deleteNews($id) {

@@ -82,7 +82,7 @@
                 <?php foreach ($news as $item): ?>
                     <div class="col-md-4">
                         <div class="card mb-4">
-                            <img src="uploads/<?= $item['image'] ?>" class="card-img-top" alt="Hình ảnh">
+                            <img src="<?= $item['image'] ?>" class="card-img-top" alt="Hình ảnh">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $item['title'] ?></h5>
                                 <p class="card-text text-muted">
