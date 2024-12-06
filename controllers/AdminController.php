@@ -32,6 +32,16 @@ class AdminController
         $newsList = $newsModel->getAllNews();
         require 'views/admin/dashboard.php';
     }
+    public function index() {
+        require_once 'models/Category.php';
+        $categoryModel = new Category();
+        $categories = $categoryModel->getAllCategories();
+
+        require_once 'models/News.php';
+        $newsModel = new News();
+        $newsList = $newsModel->getAllNews();
+        require 'views/admin/news/index.php';
+    }
 
     public function addNews() {
 
@@ -52,7 +62,7 @@ class AdminController
             }
 
             $newsModel->createNews($title, $content, $categoryId, $imagePath);
-            header('Location: index.php?action=dashboard');
+            header(header: 'Location: index.php?controller=admin&action=index');
         } else {
             require_once 'models/Category.php';
             $categoryModel = new Category();
@@ -71,7 +81,7 @@ class AdminController
         $newsModel = new News();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = $_POST['id'];
+            $id = $_GET['id'];
             $title = $_POST['title'];
             $content = $_POST['content'];
             $categoryId = $_POST['category_id'];
@@ -85,7 +95,7 @@ class AdminController
             }
 
             $newsModel->updateNews($id, $title, $content, $categoryId, $imagePath);
-            header('Location: index.php?action=dashboard');
+            header('Location: index.php?controller=admin&action=index');
         } else {
             $id = $_GET['id'];
             $news = $newsModel->getNewsById($id);
@@ -101,7 +111,7 @@ class AdminController
         $newsModel = new News();
         $id = $_GET['id'];
         $newsModel->deleteNews($id);
-        header('Location: index.php?action=dashboard');
+        header('Location: index.php?controller=admin&action=index');
     }
 
 }

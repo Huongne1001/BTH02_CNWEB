@@ -28,7 +28,7 @@
 
     <div class="container mt-5">
         <h3>Thêm Tin Tức Mới</h3>
-        <form method="POST" action="?controller=admin&action=addNews" enctype="multipart/form-data">
+        <form method="POST" action="index.php?controller=admin&action=addNews" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Tiêu đề</label>
                 <input type="text" name="title" class="form-control" id="title" required>
@@ -41,9 +41,6 @@
                 <label for="image" class="form-label">Hình ảnh</label>
                 <input type="file" name="image" class="form-control" id="image">
             </div>
-            <?php
-            echo $categories;
-            ?>
                         
             <div class="mb-3">
                 <label for="category_id" class="form-label">Danh mục</label>
