@@ -19,7 +19,7 @@
                         <a class="nav-link active" href="?controller=admin&action=dashboard">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="?controller=admin&action=manageNews">Quản lý tin tức</a>
+                        <a class="nav-link" href="?controller=admin&action=index">Quản lý tin tức</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-danger" href="?controller=admin&action=logout">Đăng xuất</a>
