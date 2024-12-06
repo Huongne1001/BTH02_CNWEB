@@ -7,18 +7,39 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container mt-4">
-        <h1 class="mb-3"><?= $newsDetail['title'] ?></h1>
-        <p class="text-muted"><?= $newsDetail['category_name'] ?> - <?= $newsDetail['created_at'] ?></p>
-        
-        <?php if (!empty($newsDetail['image'])): ?>
-            <img src="<?= $newsDetail['image'] ?>" class="img-fluid mb-4" alt="Hình ảnh tin tức">
-        <?php endif; ?>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">TLU News</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="?controller=home&action=index">Danh sách Tin Tức</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-        <p><?= nl2br($newsDetail['content']) ?></p>
-
-        <a href="?controller=home&action=index" class="btn btn-secondary mt-4">Quay lại</a>
+    <!-- Chi tiết tin tức -->
+    <div class="container mt-5">
+        <h1 class="text-center"><?= $news['title'] ?></h1> <!-- Tiêu đề tin tức -->
+        <p class="text-center text-muted">
+            Ngày đăng: <?= date('d/m/Y H:i', strtotime($news['created_at'])) ?> <!-- Thời gian đăng -->
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <img src="uploads/<?= $news['image'] ?>" class="img-fluid" alt="Hình ảnh tin tức"> <!-- Hình ảnh -->
+                <p class="mt-3"><?= nl2br($news['content']) ?></p> <!-- Nội dung tin tức -->
+            </div>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>                            
 </html>
