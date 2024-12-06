@@ -54,12 +54,16 @@ class AdminController
             $categoryId = $_POST['category_id'];
 
             // Handle image upload
-            $imagePath = null;
             if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
                 $uploadDir = 'uploads/';
-                $imagePath = $uploadDir . basename($_FILES['image']['name']);
+                // Tạo thư mục nếu chưa tồn tại
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0777, true);
+                }
+                $imageName = time() . '-' . basename($_FILES['image']['name']);
+                $imagePath = $uploadDir . $imageName;
                 move_uploaded_file($_FILES['image']['tmp_name'], $imagePath);
-            }
+            }            
 
             $newsModel->createNews($title, $content, $categoryId, $imagePath);
             header(header: 'Location: index.php?controller=admin&action=index');

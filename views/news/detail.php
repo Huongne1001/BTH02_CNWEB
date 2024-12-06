@@ -34,7 +34,7 @@
         </p>
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <img src="uploads/<?= $news['image'] ?>" class="img-fluid" alt="Hình ảnh tin tức"> <!-- Hình ảnh -->
+                <img src="<?= $news['image'] ?>" class="img-fluid" alt="Hình ảnh tin tức"> <!-- Hình ảnh -->
                 <p class="mt-3"><?= nl2br($news['content']) ?></p> <!-- Nội dung tin tức -->
             </div>
         </div>

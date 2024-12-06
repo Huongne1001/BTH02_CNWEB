@@ -43,6 +43,7 @@
             <thead class="table-dark">
                 <tr>
                     <th>#</th>
+                    <th>Ảnh</th>
                     <th>Tiêu đề</th>
                     <th>Danh mục</th>
                     <th>Ngày tạo</th>
@@ -54,6 +55,14 @@
                     <?php foreach ($newsList as $news): ?>
                         <tr>
                             <td><?php echo $news['id']; ?></td>
+                            <td>
+                                <?php if (!empty($news['image'])): ?>
+                                    <img src="<?php echo $news['image']; ?>" alt="Ảnh bài viết" style="width: 80px; height: auto;">
+                                <?php else: ?>
+                                    <span class="text-muted">Không có ảnh</span>
+                                <?php endif; ?>
+                            </td>
+
                             <td><?php echo htmlspecialchars($news['title']); ?></td>
                             <td>
                                 <?php

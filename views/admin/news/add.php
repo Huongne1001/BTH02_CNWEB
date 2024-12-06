@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm Tin Tức - TLU News</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="#">TLU News</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -38,10 +41,10 @@
                 <textarea name="content" class="form-control" id="content" rows="5" required></textarea>
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Hình ảnh</label>
-                <input type="file" name="image" class="form-control" id="image">
+                <label for="image" class="form-label">Ảnh bài viết</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*">
             </div>
-                        
+
             <div class="mb-3">
                 <label for="category_id" class="form-label">Danh mục</label>
                 <select name="category_id" class="form-select" id="category_id" required>
@@ -60,4 +63,5 @@
     </div>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

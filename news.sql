@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 05, 2024 lúc 01:56 AM
+-- Thời gian đã tạo: Th12 06, 2024 lúc 04:08 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -62,12 +62,12 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `title`, `content`, `image`, `created_at`, `category_id`) VALUES
-(1, 'Tin tức công nghệ mới nhất', 'Nội dung tin công nghệ.', 'image1.jpg', '2024-12-05 07:12:09', 1),
-(2, 'Top 10 bộ phim hot nhất tháng', 'Nội dung giải trí.', 'image2.jpg', '2024-12-05 07:12:09', 2),
-(3, 'Kết quả trận đấu bóng đá hôm nay', 'Nội dung thể thao.', 'image3.jpg', '2024-12-05 07:12:09', 3),
-(4, 'Tăng trưởng kinh tế quý 4', 'Nội dung kinh tế.', 'image4.jpg', '2024-12-05 07:12:09', 4),
-(5, 'Smartphone mới ra mắt', 'Chi tiết sản phẩm và tính năng mới.', 'image5.jpg', '2024-12-05 07:12:09', 1),
-(6, 'Showbiz hôm nay', 'Thông tin các sự kiện giải trí.', 'image6.jpg', '2024-12-05 07:12:09', 2);
+(1, 'Tin tức công nghệ mới nhất', 'Nội dung tin công nghệ.', 'uploads/image1.jpg', '2024-12-05 07:12:09', 1),
+(2, 'Top 10 bộ phim hot nhất tháng', 'Nội dung giải trí.', 'uploads/image2.jpg', '2024-12-05 07:12:09', 2),
+(3, 'Kết quả trận đấu bóng đá hôm nay', 'Nội dung thể thao.', 'uploads/image3.jpg', '2024-12-05 07:12:09', 3),
+(4, 'Tăng trưởng kinh tế quý 4', 'Nội dung kinh tế.', 'uploads/image4.jpg', '2024-12-05 07:12:09', 4),
+(5, 'Smartphone mới ra mắt', 'Chi tiết sản phẩm và tính năng mới.', 'uploads/image5.jpg', '2024-12-05 07:12:09', 1),
+(6, 'Showbiz hôm nay', 'Thông tin các sự kiện giải trí.', 'uploads/image6.jpg', '2024-12-05 07:12:09', 2);
 
 -- --------------------------------------------------------
 
@@ -128,7 +128,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT cho bảng `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
